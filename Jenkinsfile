@@ -1,4 +1,4 @@
-node {
+    node {
     def dockerImage = 'sphari/mongodb'
     def dockercredentialsID = 'dock'
     def filePath  = 'cart-deployment.yaml'
