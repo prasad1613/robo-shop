@@ -2,9 +2,10 @@ node {
     def dockerImage = 'sphari/cart'
     def dockercredentialsID = 'dock'
     def filePath  = 'cart-deployment.yaml'
-    stage('docker build') {
-        def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
-        def customImage = docker.build(dockerImageTag, '-f /var/lib/jenkins/workspace/robo_cart/Dockerfile /var/lib/jenkins/workspace/robo_cart')
+    stage('build') {
+        script {
+          sh 'docker build -t "${dockerImage}:${env.BUILD_NUMBER}" .'
+        }
     }
     stage('docker push') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
