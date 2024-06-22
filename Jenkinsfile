@@ -4,7 +4,7 @@ node {
     def filePath  = 'cart-deployment.yaml'
     stage('build') {
         script {
-          sh 'docker build -t "${dockerImage}:${env.BUILD_NUMBER}" .'
+          sh 'docker build -t ${dockerImage}:${env.BUILD_NUMBER} -f /var/lib/jenkins/workspace/robo_cart/Dockerfile'
         }
     }
     stage('docker push') {
