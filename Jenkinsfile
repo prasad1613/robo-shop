@@ -2,8 +2,15 @@ node {
     def dockerImage = 'sphari/mysql'
     def dockercredentialsID = 'docker'
     def filePath  = 'cart-deployment.yaml'
+    stage('create') {
+        script {
+            sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_mysql'
+        }
+    }
     stage('clone') {
+     dir('/var/lib/jenkins/workspace/robo_shop_mysql') {
         git branch: 'mysql', credentialsID: 'git-hub', url: 'https://github.com/prasad1613/robo-shop.git'
+    }
     }
     stage('docker build') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
@@ -45,14 +52,15 @@ node {
         sh "git pull origin main"
     }
 }  
-    stage('push version in github') {
-        dir('/var/lib/jenkins/workspace/robo-deployment') {
-        def GIT_BRANCH = 'main'
-         withcredentials(credentialsID: 'git-hub-token', "${GITHUB-TOKEN}") {
-                   sh 'git checkout main'
-                   sh 'git push https://prasad1613:${GITHUB-TOKEN}@github.com/prasad1613/robo-deployment.git ${GIT_BRANCH}'
-         } 
-        }
-    }
+    stage('Push to GitHub') {
+     branch = 'main'
+     dir('/var/lib/jenkins/workspace/k8s-deploy-service') {
+         withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
+            sh 'git checkout main'
+            sh "git pull origin main"
+            sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
+            }
+}
+}
 
 }
