@@ -51,7 +51,6 @@ node {
         sh "git config --global user.name 'prasad1613'"
         sh "git add ${filePath}"
         sh "git commit -m change-in-catalog-deployment"
-        sh "git pull origin main"
     }
 }  
     stage('Push to GitHub') {
