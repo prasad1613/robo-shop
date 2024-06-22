@@ -48,8 +48,8 @@ node {
      branch = 'main'
      dir('/var/lib/jenkins/workspace/k8s-deploy-service') {
          withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
-            sh "git pull origin main"
             sh 'git checkout main'
+            sh "git pull origin main"
             sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
             }
 }
