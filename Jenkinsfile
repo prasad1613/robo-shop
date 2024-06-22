@@ -23,7 +23,7 @@ node {
     }
     stage('clone') {
         dir('/var/lib/jenkins/workspace/') {
-            git credentialsId: 'git-hub', url: 'https://github.com/prasad1613/robo-deployment.git'
+            git branch: 'main' credentialsId: 'git-hub', url: 'https://github.com/prasad1613/robo-deployment.git'
         }
     }
     stage('replace version') {
