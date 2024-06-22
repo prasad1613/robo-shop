@@ -1,7 +1,7 @@
     node {
     def dockerImage = 'sphari/mongodb'
     def dockercredentialsID = 'docker'
-    def filePath  = 'cart-deployment.yaml'
+    def filePath  = 'mongo-deployment.yaml'
     stage('create') {
         script {
             sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_mongo'
