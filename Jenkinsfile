@@ -36,6 +36,7 @@ node {
         }
     }
     stage('push version in github') {
+        def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         dir('/var/lib/jenkins/workspace/robo-deployment') {
         sh "git config --global user.email 'prasads1613@gmail.com'"
         sh "git config --global user.name 'prasad1613'"
