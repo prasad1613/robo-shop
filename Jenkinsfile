@@ -53,7 +53,7 @@ node {
         sh "git add ${filePath}"
         sh "git commit -m change-in-vote-deployment"
         sh 'git checkout main'
-        sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
+        sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
      }
     }
     }
@@ -61,7 +61,7 @@ node {
     // dir('/var/lib/jenkins/workspace/robo-deployment') {
       //   withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
         //    sh 'git checkout main'
-          //  sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
+          //  sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
             //}
 //}
 //}
