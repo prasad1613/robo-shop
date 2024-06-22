@@ -1,7 +1,7 @@
 node {
     def dockerImage = 'sphari/dispatch'
     def dockercredentialsID = 'docker'
-    def filePath  = 'cart-deployment.yaml'
+    def filePath  = 'dispatch-deployment.yaml'
     stage('create folder') {
         script {
             sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_dispatch'
