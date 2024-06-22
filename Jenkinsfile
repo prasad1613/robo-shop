@@ -1,6 +1,6 @@
 node {
     def dockerImage = 'sphari/cart'
-    def dockercredentialsID = 'dock'
+    def dockercredentialsID = 'docker'
     def filePath  = 'cart-deployment.yaml'
     stage('clone') {
         git branch: 'cart', credentialsID: 'git-hub', url: 'https://github.com/prasad1613/robo-shop.git'
