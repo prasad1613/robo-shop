@@ -1,7 +1,10 @@
 node {
     def dockerImage = 'sphari/catalogue'
-    def dockercredentialsID = 'dock'
+    def dockercredentialsID = 'docker'
     def filePath  = 'cart-deployment.yaml'
+    stage('clone') {
+        git branch: 'catalog', credentialsID: 'git-hub', url: 'https://github.com/prasad1613/robo-shop.git'
+    }
     stage('docker build') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         def customImage = docker.build(dockerImageTag)
