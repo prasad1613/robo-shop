@@ -45,20 +45,19 @@ node {
         }    
         }
     }
-    stage('push version in github') {
-        dir('/var/lib/jenkins/workspace/robo-deployment') {
+    stage('push github') {
+     dir('/var/lib/jenkins/workspace/robo-deployment') {
         sh "git config --global user.email 'prasads1613@gmail.com'"
         sh "git config --global user.name 'prasad1613'"
         sh "git add ${filePath}"
-        sh "git commit -m change-in-catalog-deployment"
+        sh "git commit -m change-in-vote-deployment"
+     }
     }
-}  
     stage('Push to GitHub') {
      branch = 'main'
-     dir('/var/lib/jenkins/workspace/k8s-deploy-service') {
+     dir('/var/lib/jenkins/workspace/robo-deployment') {
          withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
             sh 'git checkout main'
-            sh "git pull origin main"
             sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
             }
 }
