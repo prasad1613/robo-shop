@@ -11,10 +11,12 @@ node {
       dir('/var/lib/jenkins/workspace/') {
         git branch: 'dispatch', credentialsID: 'git-hub', url: 'https://github.com/prasad1613/robo-shop.git'
     }
+    }
     stage('docker build') {
      dir('/var/lib/jenkins/workspace/robo_shop_dispatch') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         def customImage = docker.build(dockerImageTag)
+    }
     }
     stage('docker push') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
@@ -61,5 +63,4 @@ node {
             }
 }
 }
-
 }
