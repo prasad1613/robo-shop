@@ -1,7 +1,7 @@
 node {
     def dockerImage = 'sphari/catalogue'
     def dockercredentialsID = 'docker'
-    def filePath  = 'cart-deployment.yaml'
+    def filePath  = 'catalog-deployment.yaml'
     stage('create folder') {
         script {
             sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_catalog'
@@ -52,18 +52,17 @@ node {
         sh "git config --global user.name 'prasad1613'"
         sh "git add ${filePath}"
         sh "git commit -m change-in-vote-deployment"
-        sh 'git checkout main'
-        sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
+        
      }
     }
     }
-    //stage('Push to GitHub') {
-    // dir('/var/lib/jenkins/workspace/robo-deployment') {
-      //   withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
-        //    sh 'git checkout main'
-          //  sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
-            //}
-//}
-//}
+    stage('Push to GitHub') {
+     dir('/var/lib/jenkins/workspace/robo-deployment') {
+        withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
+            sh 'git checkout main'
+            sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
+            }
+}
+}
 
 }
