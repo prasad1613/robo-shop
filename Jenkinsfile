@@ -46,11 +46,11 @@ node {
 }  
     stage('Push to GitHub') {
      branch = 'main'
-     dir('/var/lib/jenkins/workspace/k8s-deploy-service') {
+     dir('/var/lib/jenkins/workspace/robo-deployment') {
          withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
             sh 'git checkout main'
             sh "git pull origin main"
-            sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/k8s-deploy-service.git main'
+            sh 'git push https://${GITHUB_TOKEN}@github.com/prasad1613/robo-deployment.git main'
             }
 }
 }
