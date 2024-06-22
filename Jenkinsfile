@@ -54,7 +54,6 @@ node {
      }
     }
     stage('Push to GitHub') {
-     branch = 'main'
      dir('/var/lib/jenkins/workspace/robo-deployment') {
          withCredentials([string(credentialsId: 'git-hub-token', variable: 'GITHUB_TOKEN')]) {
             sh 'git checkout main'
