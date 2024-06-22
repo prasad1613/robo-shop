@@ -3,7 +3,7 @@ node {
     def dockercredentialsID = 'docker'
     def filePath  = 'cart-deployment.yaml'
     stage('docker build') {
-      dir('${env.workspace}') {
+      dir('/var/lib/jenkins/workspace/robo-shop_catalog/') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         def customImage = docker.build(dockerImageTag)
     }
