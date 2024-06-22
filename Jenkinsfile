@@ -13,8 +13,10 @@ node {
     }
     }
     stage('docker build') {
+      dir('/var/lib/jenkins/workspace/robo_shop_mysql') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         def customImage = docker.build(dockerImageTag)
+    }
     }
     stage('docker push') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
