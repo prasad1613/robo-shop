@@ -8,7 +8,7 @@ node {
         }
     }
     stage('clone') {
-      dir('/var/lib/jenkins/workspace/') {
+      dir('/var/lib/jenkins/workspace/robo_shop_dispatch/') {
         git branch: 'dispatch', credentialsID: 'git-hub', url: 'https://github.com/prasad1613/robo-shop.git'
     }
     }
