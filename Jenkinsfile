@@ -4,7 +4,7 @@ node {
     def filePath  = 'cart-deployment.yaml'
     stage('docker build') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
-        def customImage = docker.build(dockerImageTag, '-f .')
+        def customImage = docker.build(dockerImageTag, '-f Dockerfile /var/lib/jenkins/workspace/robo_cart')
     }
     stage('docker push') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
