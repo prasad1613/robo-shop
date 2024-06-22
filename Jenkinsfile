@@ -1,7 +1,7 @@
 node {
     def dockerImage = 'sphari/payment'
     def dockercredentialsID = 'docker'
-    def filePath  = 'cart-deployment.yaml'
+    def filePath  = 'payments-deployment.yaml'
     stage('create') {
        script {
            sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_payments'
