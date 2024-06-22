@@ -1,7 +1,7 @@
 node {
     def dockerImage = 'sphari/ratings'
     def dockercredentialsID = 'docker'
-    def filePath  = 'cart-deployment.yaml'
+    def filePath  = 'ratings-deployment.yaml'
     stage('create') {
         script {
             sh 'mkdir -p /var/lib/jenkins/workspace/robo_shop_ratings'
