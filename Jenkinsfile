@@ -27,7 +27,7 @@ node {
         }
     }
     stage('replace version') {
-        dir('/var/lib/jenkins/workspace/') {
+        dir('/var/lib/jenkins/workspace/robo-deployment') {
         def dockerImageTag = "${dockerImage}:${env.BUILD_NUMBER}"
         script {
             sh "sed -i 's|sphari/cart:[0-9.]*|${dockerImageTag}|g' ${filePath}"
